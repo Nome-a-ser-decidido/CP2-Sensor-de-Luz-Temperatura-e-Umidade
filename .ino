@@ -266,13 +266,13 @@ void loop(){
       buttonMode++;
     }
     switch(buttonMode){
-      case 0:
+      case 0: // Modo temperatura
         lcdTerm();
         break;
-      case 1:
+      case 1: // Modo umidade
         lcdHumi();
         break;
-      case 2:
+      case 2: // Modo Luz
         lcdLight();
         break;
     }
@@ -280,12 +280,16 @@ void loop(){
   }
 
   lcd.setCursor(3,1);
-  if (buttonMode == 0){ // Temperature Mode
+  if (buttonMode == 0){ // Modo temperatura
   lcd.print(t);
-  } else if (buttonMode == 1){
+  } else if (buttonMode == 1){ // Modo umidade
   lcd.print(h);
-  } else{
+  } else{ // Modo Luz
   lcd.print(l);
+  if (l < 100){
+    lcd.setCursor(5,1);
+    lcd.print(" "); // Deletar o digito 0 caso chegue no 100 e volte
+  }
   }
 
   ledBuzzerCheck(l, t,h);
