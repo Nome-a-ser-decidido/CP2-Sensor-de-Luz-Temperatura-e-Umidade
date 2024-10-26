@@ -1,4 +1,4 @@
-# CP2-Sensor-de-Luz-Temperatura-e-Umidade
+# Sensor-de-Luz-Temperatura-e-Umidade
 
 Este projeto lê os níveis de umidade, temperatura e luminosidade, exibindo os valores em um display. Também registra automaticamente no EEPROM dados que ultrapassam os limites definidos pelo usuário, com data e hora registradas pelo RTC.
 
