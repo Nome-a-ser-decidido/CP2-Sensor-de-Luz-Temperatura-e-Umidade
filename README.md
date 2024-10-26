@@ -30,4 +30,19 @@ Este projeto teve como principal objetivo fazer um sensor para uma vinharia util
 - Biblioteca Liquid Crystal (Display)
 - Biblioteca RTC (Relógio digital)
 
+## Instalação
+1. Conecte o arduíno ao computador
+2. Coloque o código .ino ao IDE do arduíno
+3. Carregue o código
+
+## Como usar
+- Utilize o botão para trocar as interfaces
+- Para ler os dados salvos no EEPROM basta mudar configuração "READ_LOG" na linha 13:
+  ![image](https://github.com/user-attachments/assets/d37dc89c-a4e5-47cb-88fb-80aac4271d86)
+
+## Video
+
+
+
+
 
