@@ -23,10 +23,15 @@ int lRaw = 0; // Variável para armazenar o valor do sensor
 
 int button = A1; // Pino do botão
 int buttonMode = 0; // 0 - Temperatura, 1 - Humidade, 2 - Luz
-int buttonLastState = 0;
 
 unsigned long previousMillis = 0; //Variável para estocar o millis anterior
 int buzzerDelay = 3000; //Delay do buzzer para desligar
+
+// Debounce para o botão e a função de gravar no EEPROM
+unsigned long lastButtonPress = 0;  // Armazena o último momento de pressionamento do botão
+unsigned long lastEEPROMRead = 0;   // Armazena o último momento de leitura do EEPROM
+const unsigned long buttonDebounceDelay = 200; // Tempo de debounce para o botão
+const unsigned long eepromReadInterval = 5000; // Intervalo para leitura do EEPROM (5 segundos)
 
 const int yellowAlertLight = 55; //Limite para acionar alerta amarelo (LUZ)
 const int redAlertLight = 67; // Limite para acionar o alerta vermelho (LUZ)
@@ -259,12 +264,9 @@ void loop(){
   int buttonState = analogRead(button);
   buttonState = map(buttonState,0,1023,0,1);
 
-  if (buttonState == 1 && buttonLastState == 0){ // Checagem do botão e debounce
-    if (buttonMode >= 3){
-      buttonMode = 0;
-    } else{
-      buttonMode++;
-    }
+  if (buttonState == 1 && millis() - lastButtonPress > buttonDebounceDelay){ // Checagem do botão e debounce
+    lastButtonPress = millis();
+    buttonMode = (buttonMode + 1) % 3; // Alterna entre os modos de 0 a 2
     switch(buttonMode){
       case 0: // Modo temperatura
         lcdTerm();
@@ -276,7 +278,6 @@ void loop(){
         lcdLight();
         break;
     }
-    delay(200);
   }
 
   lcd.setCursor(3,1);
@@ -305,8 +306,10 @@ void loop(){
   // Serial.print(t);
   // Serial.print("\n");
 
-  if(READ_LOG) readData(); // Leiturar do EEPROM caso o modo esteja ativado.
-  buttonLastState = buttonState;
+if (READ_LOG && millis() - lastEEPROMRead >= eepromReadInterval) {
+    readData();  // Lê o EEPROM
+    lastEEPROMRead = millis(); // Atualiza o tempo da última leitura do EEPROM
+  }
   delay(500);
 
 }
