@@ -40,10 +40,8 @@ Este projeto teve como principal objetivo fazer um sensor para uma vinharia util
 - Para ler os dados salvos no EEPROM basta mudar configuração "READ_LOG" na linha 13:
   ![image](https://github.com/user-attachments/assets/d37dc89c-a4e5-47cb-88fb-80aac4271d86)
 
-## Video
+## Link para a simulação
 
-[![Vídeo](![Checkpoint 2 Arduino-00132](https://github.com/user-attachments/assets/9fb10122-ad87-4163-a68b-7bef3a54a77f))](https://www.youtube.com/watch?v=D6XuQYamK4I)
-
-
+https://wokwi.com/projects/412854490344961025
 
 
