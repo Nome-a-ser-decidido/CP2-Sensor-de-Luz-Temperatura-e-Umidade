@@ -42,6 +42,7 @@ Este projeto teve como principal objetivo fazer um sensor para uma vinharia util
 
 ## Video
 
+[![Vídeo](![Checkpoint 2 Arduino-00132](https://github.com/user-attachments/assets/9fb10122-ad87-4163-a68b-7bef3a54a77f))](https://www.youtube.com/watch?v=D6XuQYamK4I)
 
 
 
